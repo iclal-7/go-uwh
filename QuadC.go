@@ -2,8 +2,16 @@ package main
 
 import "fmt"
 
-func kenarmi(i, j, x, y int) bool {
-	return i == 1 || i == y || j == 1 || j == x
+func SatirYazdir(ilkKar, ortaKar, sonKar string, uzunluk int) {
+	fmt.Print(ilkKar)
+	for i := 0; i < uzunluk-2; i++ {
+		fmt.Print(ortaKar)
+	}
+	if uzunluk > 1 {
+		fmt.Print(sonKar)
+	}
+
+	fmt.Println() // \n ile aynı şeyi yapar, bir alt satıra geçer
 }
 
 func QuadC(x, y int) {
@@ -11,18 +19,13 @@ func QuadC(x, y int) {
 		return
 	}
 	for i := 1; i <= y; i++ {
-		for j := 1; j <= x; j++ {
-			if (i == 1 && j == 1) || (i == 1 && j == x) { // sol üst köşe ve sağ üst köşe
-				fmt.Print("A")
-			} else if (i == y && j == 1) || (i == y && j == x) { // sol alt köşe ve sağ alt köşe
-				fmt.Print("C")
-			} else if kenarmi(i, j, x, y) { //sağ, sol, üst, alt kenarlar
-				fmt.Print("B")
-			} else {
-				fmt.Print(" ") // kalan yerlere boşluk koyuyoruz
-			}
+		if i == 1 {
+			SatirYazdir("A", "B", "A", x)
+		} else if i > 1 && i < y {
+			SatirYazdir("B", " ", "B", x)
+		} else {
+			SatirYazdir("C", "B", "C", x)
 		}
-		fmt.Print("\n") // her satırın sonunda alt satıra geçmesi için
 	}
 }
 
