@@ -2,24 +2,30 @@ package main
 
 import "fmt"
 
+func SatirYazdir(ilkKar, ortaKar, sonKar string, uzunluk int) {
+	fmt.Print(ilkKar)
+	for i := 0; i < uzunluk-2; i++ {
+		fmt.Print(ortaKar)
+	}
+	if uzunluk > 1 {
+		fmt.Print(sonKar)
+	}
+
+	fmt.Println() // \n ile aynı şeyi yapar, bir alt satıra geçer
+}
+
 func QuadA(x, y int) {
 	if x <= 0 || y <= 0 {
 		return
 	}
 	for i := 1; i <= y; i++ {
-		for j := 1; j <= x; j++ {
-			// i ve j'yi köşede olup olmamasına göre kontrol ediyoruz
-			if (i == 1 && j == 1) || (i == 1 && j == x) || (i == y && j == 1) || (i == y && j == x) {
-				fmt.Print("৹")
-			} else if j == 1 || j == x {
-				fmt.Print("|") // i ve j'yi sağ ve solda olup olmamasına göre kontrol ediyoruz
-			} else if i == 1 || i == y {
-				fmt.Print("-") // i ve j'yi üst ve altta olup olmamasına göre kontrol ediyoruz
-			} else {
-				fmt.Print(" ") // kalan yerlere boşluk koyuyoruz
-			}
+		if i == 1 {
+			SatirYazdir("*", "-", "*", x)
+		} else if i > 1 && i < y {
+			SatirYazdir("|", " ", "|", x)
+		} else {
+			SatirYazdir("*", "-", "-", x)
 		}
-		fmt.Print("\n") // her satırın sonunda alt satıra geçmesi için
 	}
 }
 
