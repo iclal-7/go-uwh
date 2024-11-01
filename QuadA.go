@@ -24,7 +24,7 @@ func QuadA(x, y int) {
 		} else if i > 1 && i < y {
 			SatirYazdir("|", " ", "|", x)
 		} else {
-			SatirYazdir("*", "-", "-", x)
+			SatirYazdir("*", "-", "*", x)
 		}
 	}
 }
